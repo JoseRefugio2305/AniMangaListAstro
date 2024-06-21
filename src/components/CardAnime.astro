@@ -1,0 +1,47 @@
+---
+import '../styles/style.css';
+import { Image } from 'astro:assets';
+
+interface Props {
+	titulo: string,
+	sinopsis:string,
+	imagen:string,
+	calificacion:number|null,
+	linkmal:string,
+	dia_em:string,
+	is_em:boolean
+}
+
+const { titulo, sinopsis, imagen, calificacion, linkmal, dia_em, is_em } = Astro.props;
+
+---
+
+<div class="card_princ card_princ_carousel hover:scale-110 ease-out duration-200 drop-shadow-2xl">
+	<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 face card_Anime bg-slate-300 hover:bg-neutral-200">
+	    <Image class="rounded-t-lg" inferSize={true} src={imagen} alt={titulo} loading="eager" decoding="sync"/>
+	    <div class="p-5">
+	    	<div class="inline-flex items-center justify-start">
+				{
+					is_em ? <span class="inline-flex rounded-[64px] border text-center font-semibold transition-all duration-300 ease-in-out h-5 px-2 py-0.5 text-xs leading-tight border-green-600 bg-green-50 text-green-700 mr-2">{dia_em}</span> : ''
+				}
+				<span class="inline-flex rounded-[64px] border text-center font-semibold transition-all duration-300 ease-in-out h-7 px-3 py-1 text-sm leading-tight border-amber-600 bg-amber-50 text-amber-600">{calificacion}</span>
+				
+			</div>
+	        <a href={linkmal} >
+	            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-black">{titulo} </h5>
+	        </a>
+	        
+	    </div>
+	</div>
+                
+    
+    <div class=" card_desc face">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <a class="text-thite" href={linkmal}>{titulo}</a>
+        </h5>
+        <div class="">
+            <b>Sinopsis: </b>
+            <p >{sinopsis}</p>
+        </div>
+    </div>
+</div>

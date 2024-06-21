@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CardAnime from '../../components/CardAnime.astro';
+
+import {maTop} from '../../services/api.ts';
+
+const animesT = await maTop(0);
+---
+
+<Layout title="Top Animes" >
+	<main id="animestop">
+		<h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white"> Top de Animes </h5>
+		<div class="grid md:grid-cols-6 sm:grid-cols-3">
+
+			{
+				animesT.map((aT)=>
+					 <CardAnime
+					 	titulo={aT.titulo}
+					 	sinopsis={aT.sinopsis}
+					 	imagen={aT.imagen}
+					 	calificacion={aT.calificacion}
+					 	linkmal={aT.linkmal}
+					 	dia_em=""
+					 	is_em={false}
+					 />
+				)
+			}
+		</div>
+		
+	</main>
+</Layout>
+

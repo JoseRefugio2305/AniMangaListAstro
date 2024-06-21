@@ -1,0 +1,30 @@
+---
+
+
+interface Props {
+	titulo : string,
+	fecha : Date,
+	url : string,
+	imagen : string,
+	resumen : string
+}
+
+const {  titulo, fecha, url, imagen, resumen } = Astro.props;
+
+
+---
+
+<a href={url} class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-black dark:border-gray-700 dark:bg-gray-800  ease-out duration-200 ml-3 mr-3 mb-2 mt-2 hover:scale-105">
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" loading="eager" src={imagen} alt={titulo}  onerror="changeImage(this)">
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{titulo}</h5>
+        <span class="mb-3 font-bold text-gray-700 dark:text-gray-400">{fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear()}</span>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{resumen}</p>
+    </div>
+</a>
+
+<script type="text/javascript" is:inline>
+	changeImage = (image) =>{
+		image.src = '/image_not_found.jpg'
+	}
+</script>

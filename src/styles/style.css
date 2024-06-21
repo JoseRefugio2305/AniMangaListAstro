@@ -1,0 +1,120 @@
+.card_princ {
+    position: relative;
+    height: 500px;
+    margin: 20px;
+}
+.card_princ .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .5s;
+}
+.card_princ .card_Anime{
+    transform: perspective(600px) rotateY(0deg);
+    transition-duration: 1s;
+/*    box-shadow: 0 5px 10px #000;*/
+}
+.card_princ .card_desc {
+    transform: perspective(600px) rotateY(180deg);
+    transition-duration: 1s;
+    background: rgb(0, 0, 0);
+    padding: 15px;
+    color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+/*    box-shadow: 0 5px 10px #000;*/
+}
+
+
+
+@keyframes rotation {
+    
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+
+
+@media (min-width:1187px){
+    .card_princ:hover .card_Anime {
+        transform: perspective(600px) rotateY(180deg);
+    }
+    
+    .card_princ:hover .card_desc {
+        transform: perspective(600px) rotateY(360deg);
+    }
+}
+@media (max-width: 1186px) and (min-width:980px){
+    .card_show_anime {
+        height: 400px;
+        
+    }
+    .card_princ:hover .card_Anime {
+        transform: perspective(600px) rotateY(180deg);
+    }
+    
+    .card_princ:hover .card_desc {
+        transform: perspective(600px) rotateY(360deg);
+    }
+}
+@media (max-width: 979px) and (min-width:762px){
+    .card_show_anime {
+        height:350px;
+        
+    }
+    .card_princ:hover .card_Anime {
+        transform: perspective(600px) rotateY(180deg);
+    }
+    
+    .card_princ:hover .card_desc {
+        transform: perspective(600px) rotateY(360deg);
+    }
+}
+@media (min-width: 761px){
+    .btn-fav-sm{
+        display: none;
+    }
+}
+@media (max-width: 575px) and (min-width:555px){
+    .card_show_anime {
+        height:950px;
+        
+    }
+}
+@media (max-width: 554px) and (min-width:516px){
+    .card_show_anime {
+        height:870px;
+        
+    }
+}
+@media (max-width: 515px) and (min-width:441px){
+    .card_princ_carousel {
+        height: 600px;
+        
+    }
+    .card_show_anime {
+        height:850px;
+        
+    }
+}
+@media (max-width:440px){
+    .card_show_anime {
+        height:700px;
+        
+    }
+}
+@media (max-width:400px){
+    .card_show_anime {
+        height:600px;
+        
+    }
+}
