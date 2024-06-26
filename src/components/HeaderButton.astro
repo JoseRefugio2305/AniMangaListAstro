@@ -4,8 +4,12 @@ interface Props {
 }
 
 const {  p_href } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const classes = 'flex-row justify-center cursor-pointer hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100'
 ---
 
-<a href={p_href} class="flex-row justify-center  text-white cursor-pointer hover:bg-white hover:text-black focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 hover:shadow-lg transition-all duration-200 ease-in-out hover:scale-110 scale-90 gap-x-2 opacity-90 hover:opacity-100">
+<a href={p_href} class={currentPath === p_href ? 'bg-white text-black underline '+classes : 'text-white '+classes}>
 	<slot/>
 </a>

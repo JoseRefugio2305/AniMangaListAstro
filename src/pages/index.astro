@@ -1,17 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import UpcomingAnimes from '../components/UpcomingAnimes.astro';
 
-import {news} from '../services/api.ts';
+import {news, news_direct} from '../services/api.ts';
 
-import CardNews from '../components/CardNews.astro'
+import CardNews from '../components/CardNews.astro';
 
 const newsP = await news();
-
-//console.log(newsP)
+const upcomingA = await news_direct();
 ---
 
 <Layout title="AniMangaList StaticV" >
 	<main id="news">
+		
+		<h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white"> Animes Por Estrenar </h5>
+		<UpcomingAnimes listAnimes={upcomingA}/>
+		<div class="bg-slate-300 my-4 w-full h-[1px]"></div>
 		<h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white"> Noticias Recientes </h5>
 		<div class="grid md:grid-cols-2 sm:grid-cols-1 ml-3 mr-3">
 			{
@@ -23,6 +27,8 @@ const newsP = await news();
 						url = {np.url}
 						imagen = {np.imagen}
 						resumen = {np.resumen}
+
+
 					>
 					</CardNews>
 
@@ -34,27 +40,4 @@ const newsP = await news();
 	</main>
 </Layout>
 
-<!--
-
-<a
-						href=""
-						class="rounded-lg border shadow-md bg-gray-800 border-gray-700 hover:scale-105 hover:bg-black rounded-lg ease-out duration-200 drop-shadow-2xl hover:text-red-300 hover:border-gray-500 transition flex flex-col ml-3 mr-3 mb-2 mt-2"
-						>
-						<div class="flex justify-center p-4">
-							<img class="mb-5 rounded-lg" src="" alt=""/>
-						</div>
-
-						<header class="p-4 flex-grow">
-							<h2 class="my-2 text-2xl font-bold tracking-tight text-white">
-								Flight #""
-							</h2>
-							<p class="mb-4 font-light text-gray-400">
-								
-							</p>
-						</header>
-
-					</a>
-
-
--->
 

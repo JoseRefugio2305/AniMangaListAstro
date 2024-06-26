@@ -1,6 +1,8 @@
 import Jikan from 'jikan4.js'
 const client = new Jikan.Client()
 
+
+
 export const animesEmision = async () =>{
 	enum Days {
 		Sundays = 0,
@@ -29,16 +31,8 @@ export const animesEmision = async () =>{
       }).filter((a)=>{
       		let calificacion = a.calificacion ? a.calificacion : 0
       		return calificacion>7
-      })
-      // .sort((a,b)=>{
-      // 	const dia_em_a = a.dia_em ? a.dia_em : Days.Unknown
-      // 	const dia_em_b = b.dia_em ? b.dia_em : Days.Unknown
-      // 	const day_na = Daysdia_em_a}
-      // 	const day_nb = Days.dia_em_b
-      // 	return day_na<day_nb ? -1:0
-      // });
+      });
 
-	// console.log(results[0].calificacion)
 	return results;
 }
 
@@ -89,4 +83,21 @@ export const news = async () => {
 		return a.fecha>b.fecha ? -1 : 0
 	})
 	return results
+}
+
+export const news_direct = async () => {
+	const upcoming = (await client.seasons.getUpcoming())?.map((aupc)=>{
+		// console.log(aupc)
+		return {
+			malid : aupc.id,
+			titulo : aupc.title.default,
+			url : aupc.url.href,
+			imagen : aupc?.image?.jpg?.default?.href ? aupc?.image?.jpg?.default?.href : '/image_not_found.jpg',
+			season: aupc.season,
+			popularidad: aupc.popularity
+
+		}
+	})
+	// console.log(upcoming)
+	return upcoming
 }

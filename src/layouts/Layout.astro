@@ -1,12 +1,14 @@
 ---
 import HeadMenu from '../components/HeadMenu.astro'
-import {ViewTransitions} from 'astro:transitions'
+import {ViewTransitions, slide} from 'astro:transitions'
 
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+
+//
 ---
 
 <!doctype html>
@@ -15,7 +17,7 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/page_icon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ViewTransitions/>
@@ -24,8 +26,13 @@ const { title } = Astro.props;
 		
 		<main class="m-3">
 			<HeadMenu transition:persist/>
-			<slot />
+			<div  transition:animate={slide({ duration: '0.75s' })}>
+				<slot />
+			</div>
+			
 		</main>
+
+	
 	</body>
 </html>
 

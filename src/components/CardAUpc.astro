@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	index:number,
+	malid:number,
+	titulo : string,
+	url : string,
+	imagen : string,
+	season:string, 
+	popularidad: number
+}
+
+const { index, malid, titulo, url, imagen, season, popularidad } = Astro.props;
+
+const classes = "flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-black dark:border-gray-700 dark:bg-gray-800  ease-out duration-200 ml-3 mr-3 mb-2 mt-2 hover:scale-105"
+---
+
+<a  href={url} class={index <=1 ? classes+' a-upc' : classes+' hidden a-upc'}>
+	<Image class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" inferSize={true} src={imagen} alt={titulo} loading="eager" decoding="sync"/>
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{titulo}</h5>
+        <span class="inline-flex rounded-[64px] border text-center font-semibold transition-all duration-300 ease-in-out h-5 px-2 py-0.5 text-xs leading-tight border-green-600 bg-green-50 text-green-700 mr-2 mb-3 justify-center">Personas esperando: {popularidad}</span>
+        <span class="inline-flex rounded-[64px] border text-center font-semibold transition-all duration-300 ease-in-out h-5 px-2 py-0.5 text-xs leading-tight border-blue-300 bg-blue-50 text-blue-600 justify-center">Temporada: {season}</span>
+    </div>
+</a>

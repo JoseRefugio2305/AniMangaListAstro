@@ -1,0 +1,69 @@
+---
+import CardAUpc from '../components/CardAUpc.astro';
+
+interface Props {
+	listAnimes : [],
+}
+
+const {  listAnimes } = Astro.props;
+
+---
+<div class="grid md:grid-cols-2 sm:grid-cols-1 ml-3 mr-3">
+{
+	
+	listAnimes.map((aupc,i)=>
+		<CardAUpc
+			index={i}
+			malid= {aupc.malid}
+			titulo = {aupc.titulo}
+			url = {aupc.url}
+			imagen = {aupc.imagen}
+			season= {aupc.season}
+			popularidad= {aupc.popularidad}
+			
+		/>
+	)
+}
+</div>
+<script type="text/javascript" is:inline>
+	let animes = document.getElementsByClassName('a-upc')
+	console.log(animes.length)
+	const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+	const ShowAnimes = async ()=>{
+
+		let c = 0;
+
+		for(let i=0; i<animes.length; i++)
+		{
+			if(i<=1){
+				animes[0].classList.remove("hidden")
+				animes[1].classList.remove("hidden")
+			}
+			else if(i>1 && i<animes.length-1)
+			{
+				animes[i-1].classList.add("hidden")
+				animes[i-2].classList.add("hidden")
+				animes[i].classList.remove("hidden")
+				animes[i+1].classList.remove("hidden")
+			}
+			else if(i==animes.length-1 && animes.length%2!=0)
+			{
+				animes[i-1].classList.add("hidden")
+				animes[i-2].classList.add("hidden")
+				animes[i].classList.remove("hidden")
+				animes[0].classList.remove("hidden")
+			}
+
+
+			await sleep(2500)
+			i++;
+		}
+
+		animes[animes.length-1].classList.add("hidden")
+	}
+	ShowAnimes();
+	setInterval(ShowAnimes, animes.length*2000)
+
+	
+</script>
