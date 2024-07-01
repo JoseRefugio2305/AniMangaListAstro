@@ -24,3 +24,23 @@ const classes = "flex flex-col items-center bg-white border border-gray-200 roun
         <span class="inline-flex rounded-[64px] border text-center font-semibold transition-all duration-300 ease-in-out h-5 px-2 py-0.5 text-xs leading-tight border-blue-300 bg-blue-50 text-blue-600 justify-center">Temporada: {season}</span>
     </div>
 </a>
+
+<style>
+
+	.a-upc {
+	  animation-duration: 1s;
+	  animation-name: slidein;
+	}
+
+	@keyframes slidein {
+	  from {
+	    translate: 150vw 0;
+	    scale: 200% 1;
+	  }
+
+	  to {
+	    translate: 0 0;
+	    scale: 100% 1;
+	  }
+	}
+</style>

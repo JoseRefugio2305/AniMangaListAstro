@@ -12,7 +12,7 @@ import pageIcon from '../../public/page_icon.png';
 			AniManga List StaticV
 
 		</h2>
-		<Image src={pageIcon} alt="Icono de la Pagina" loading="eager"/>
+		<Image class="icon-page" src={pageIcon} alt="Icono de la Pagina" loading="eager"/>
 		<!--<p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
 			Toda la informacion de los lanzamientos de SpaceX
 		</p>-->
@@ -41,6 +41,15 @@ import pageIcon from '../../public/page_icon.png';
 
 	</div>
 </header>
+
+<style>
+	.icon-page {
+		mask-image: linear-gradient(
+				black 70%,
+				transparent
+			)
+	}
+</style>
 
 
 <!-- Required JavaScript -->
