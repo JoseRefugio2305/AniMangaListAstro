@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+
+
+---
+
+<Layout title="404" >
+	<main id="notfound" >
+		<div class="justify-items-center text-center ">
+			<h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white"> Pagina No Encontrada </h5>
+			
+			<Image class="rounded-t-lg ml-auto mr-auto" inferSize={true} src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjB0c21xc2c0eTg4czg4N3ljYmc4bHUzamNjb2NzemJlMW0xN3hmbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NTur7XlVDUdqM/giphy.gif" alt="404 image" loading="eager" decoding="sync"/>
+		</div>
+		
+	</main>
+</Layout>
