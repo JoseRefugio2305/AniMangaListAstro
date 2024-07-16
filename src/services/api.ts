@@ -15,7 +15,8 @@ export const animesEmision = async () =>{
 		Unknown = 7
 	}
 	let count=0;
-	const results = (await client.anime.listScheduled(0,200)).map((anime) => {
+	var results = await client.anime.listScheduled(0,200)
+	 results = results.map((anime) => {
         // console.log(anime)
         // console.log(anime.url.href)
         count++
@@ -55,8 +56,8 @@ export const maTop = async (matype:number) => {
 
 
 export const news = async () => {
-
-	const resan = (await client.anime.getNews(1,0,10))?.map((anews)=>{
+	var resan = await client.anime.getNews(1,0,10)
+	resan = resan.map((anews)=>{
 		return {
 			titulo : anews.title,
 			fecha : anews.date,
@@ -67,7 +68,8 @@ export const news = async () => {
 		}
 	})
 
-	const resman = (await client.manga.getNews(2,0,10))?.map((mnews)=>{
+	var resman = await client.manga.getNews(2,0,10)
+	resman = resman.map((mnews)=>{
 		return {
 			titulo : mnews.title,
 			fecha : mnews.date,
@@ -86,7 +88,8 @@ export const news = async () => {
 }
 
 export const news_direct = async () => {
-	const upcoming = (await client.seasons.getUpcoming())?.map((aupc)=>{
+	var upcoming = await client.seasons.getUpcoming()
+	upcoming = upcoming.map((aupc)=>{
 		// console.log(aupc)
 		return {
 			malid : aupc.id,
@@ -101,3 +104,5 @@ export const news_direct = async () => {
 	// console.log(upcoming)
 	return upcoming
 }
+
+
